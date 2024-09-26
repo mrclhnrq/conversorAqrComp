@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/style.css">
+    <title>Conversor</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <h1> CONVERSOR ULTRA ESPACIAL - HAAL 9000</h1>
+            <select name="" id="select_base">
+                <option value="#">Selecione a base que deseja converter</option>
+                <option value="decimal">Decimal</option>
+                <option value="binario">Binário</option>
+                <option value="octal">Octal</option>
+                <option value="hexa">Hexadecimal</option>
+            </select>
+            <button onclick="exibir()">Abrir conversor</button>
+            <div id="div_card"></div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    function exibir() {
+        var base = select_base.value;
+
+        if (base == "decimal") {
+            div_card.innerHTML = `
+
+<div id="div_container1" style="display: flex; align-items: center; flex-direction: column; background-color: rgba(0, 0, 0, 0.8);; border-radius: 10px; margin: 20px;
+    padding: 40px;">
+
+    <div id="div_conversao1" style="display: flex; flex-direction: column;">
+
+        <div style="display: flex; align-items: center; flex-direction: column; border-radius: 50px;">
+            <h3 style="color: #fff; font-size: 24px; font-family: 'Arial', sans-serif;">Decimal</h3>
+            <input style="border-radius: 6px solid" id="input_decimal" type="text" placeholder="Digite o valor em decimal">
+            <br>
+            <button onclick="converter1()" style="background-color: #dc143c; color: #fff; padding: 5px 10px; border: none;
+            border-radius: 5px; cursor: pointer; font-size: 16px;
+            "onmouseover="this.style.backgroundColor='#0000ff';" onmouseout="this.style.backgroundColor='#dc143c';">Converter</button>
+            <br>
+        </div>
+
+    </div>
+
+    <div id="div_decimal"></div>
+
+</div>`
+        }
+
+        if (base == "binario") {
+            div_card.innerHTML = `<div id="div_container2" style="display: flex; align-items: center; flex-direction: column; background-color: rgba(0, 0, 0, 0.8); border-radius: 10px; margin: 20px;
+                    padding: 40px;">
+    
+                    <div id="div_conversao2" style="display: flex; align-items: center; flex-direction: column;">
+    
+                        <div style="display: flex; align-items: center; flex-direction: column; border-radius: 50px;">
+                            <h3 style="color: #fff; font-size: 24px; font-family: 'Arial', sans-serif;">Binário</h3>
+                            <input id="input_binario" type="text" placeholder="Digite o valor em binário">
+                            <br>
+                            <button onclick="converter2()" style="background-color: crimson; color: #fff; padding: 5px 10px; border: none;
+                            border-radius: 5px; cursor: pointer; font-size: 16px;
+                            "onmouseover="this.style.backgroundColor='#0000ff';" onmouseout="this.style.backgroundColor='#dc143c';">Converter</button>
+                            <br>
+                        </div>
+    
+                    </div>
+    
+                    <div id="div_binario"></div>
+    
+                </div>`
+        }
+
+        if (base == "octal") {
+            div_card.innerHTML = `<div id="div_container3" style="display: flex; align-items: center; flex-direction: column; background-color: rgba(0, 0, 0, 0.8); border-radius: 10px; margin: 20px;
+                    padding: 40px;">
+    
+                    <div id="div_conversao3" style="display: flex; align-items: center; flex-direction: column;">
+    
+                        <div style="display: flex; align-items: center; flex-direction: column; border-radius: 50px;">
+                            <h3 style="color: #fff; font-size: 24px; font-family: 'Arial', sans-serif;">Octal</h3>
+                            <input id="input_octal" type="text" placeholder="Digite o valor em octal">
+                            <br>
+                            <button onclick="converter3()" style="background-color: crimson; color: #fff; padding: 5px 10px; border: none;
+                            border-radius: 5px; cursor: pointer; font-size: 16px;
+                            "onmouseover="this.style.backgroundColor='#0000ff';" onmouseout="this.style.backgroundColor='#dc143c';">Converter</button>
+                            <br>
+                        </div>
+    
+                    </div>
+                    
+                    <div id="div_octal"></div>
+    
+                </div>`
+        }
+
+        if (base == "hexa"){
+            div_card.innerHTML = `<div id="div_container4" style="display: flex; align-items: center; flex-direction: column; background-color: rgba(0, 0, 0, 0.8); border-radius: 10px; margin: 20px;
+                padding: 40px;">
+                <div id="div_conversao4" style="display: flex; align-items: center; flex-direction: column;">
+                    <div style="display: flex; align-items: center; flex-direction: column; border-radius: 50px;">
+                        <h3 style="color: #fff; font-size: 24px; font-family: 'Arial', sans-serif;">Hexadecimal</h3>
+                        <input id="input_hexa" type="text" placeholder="Digite o valor em Hexade...">
+                        <br>
+                        <button onclick="converter4()" style="background-color: crimson; color: #fff; padding: 5px 10px; border: none;
+                            border-radius: 5px; cursor: pointer; font-size: 16px;
+                            "onmouseover="this.style.backgroundColor='#0000ff';" onmouseout="this.style.backgroundColor='#dc143c';">Converter</button>
+                        <br>
+                    </div>
+
+                </div>
+
+                <div id="div_hexa"></div>
+
+            </div>`
+        }
+
+    }
+
+    function converter1() {
+
+        var decimal = parseInt(document.getElementById('input_decimal').value, 10);
+        let binaria = decimal.toString(2);
+        let octal = decimal.toString(8);
+        let hexadecimal = decimal.toString(16).toUpperCase();
+
+        if (input_decimal.value == '') {
+            div_decimal.innerHTML = `<b style = "color: white;">Digite um número válido.</b>`
+        } else {
+
+            div_decimal.innerHTML = `<span style = "color: white;">O número <b style = "color: #ff8800;">${decimal}</b> convertido para; <br>
+                             <br><i>Binário</i> é <b style = "color: #ff8800;">${binaria}</b> <br>
+                             <br><i>Octal</i> é <b style = "color: #ff8800;">${octal}</b><br>
+                             <br><i>Hexadecimal</i> é <b style = "color: #ff8800;">${hexadecimal}</b></span>`
+        }
+
+    }
+
+    function converter2() {
+
+        var binario = parseInt(document.getElementById('input_binario').value, 2);
+        let decimal = binario.toString(10);
+        let octal = binario.toString(8);
+        let hexadecimal = binario.toString(16).toUpperCase();
+
+        if (input_binario.value == '') {
+            div_binario.innerHTML = `<b style = "color: white;">Digite um número válido.</b>`
+        } else {
+
+            div_binario.innerHTML = `<span style = "color: white;">O número <b style = "color: #ff8800;">${Number(input_binario.value)}</b> convertido para; <br>
+                             <br><i>Decimal</i> é <b style = "color: #ff8800;">${decimal}</b> <br>
+                             <br><i>Octal</i> é <b style = "color: #ff8800;">${octal}</b><br>
+                             <br><i>Hexadecimal</i> é <b style = "color: #ff8800;">${hexadecimal}</b> </span>`
+        }
+
+    }
+
+    function converter3() {
+
+        var octal = parseInt(document.getElementById('input_octal').value, 8);
+        let decimal = octal.toString(10);
+        let binaria = octal.toString(2);
+        let hexadecimal = octal.toString(16).toUpperCase();
+
+        if (input_octal.value == '') {
+            div_octal.innerHTML = `<b style = "color: white;">Digite um número válido.</b>`
+        } else {
+
+            div_octal.innerHTML = `<span style = "color: white;">O número <b style = "color: #ff8800;">${Number(input_octal.value)}</b> convertido para; <br>                
+                             <br><i>Decimal</i> é <b style = "color: #ff8800;">${decimal}</b><br>
+                             <br><i>Binário</i> é <b style = "color: #ff8800;">${binaria}</b> <br>
+                             <br><i>Hexadecimal</i> é <b style = "color: #ff8800;">${hexadecimal}</b></span>`
+
+        }
+
+    }
+
+    function converter4() {
+
+        var hexa = parseInt(document.getElementById('input_hexa').value, 16);
+        let decimal = hexa.toString(10);
+        let binaria = hexa.toString(2);
+        let octal = hexa.toString(8);
+
+        if (input_hexa.value == '') {
+            div_hexa.innerHTML = `<b style = "color: white;">Digite um número válido.</b>`
+        } else {
+
+            div_hexa.innerHTML = `<span style = "color: white;">O número <b style = "color: #ff8800;">${(input_hexa.value)}</b> convertido para; <br>
+                             <br><i>Decimal</i> é <b style = "color: #ff8800;">${decimal}</b> <br>
+                             <br><i>Binário</i> é <b style = "color: #ff8800;">${binaria}</b> <br>
+                             <br><i>Octal</i> é <b style = "color: #ff8800;">${octal}</b><br></span>`
+        }
+    }
+
+
+</script>
